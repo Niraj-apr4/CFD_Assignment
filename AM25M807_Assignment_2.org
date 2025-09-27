@@ -1,6 +1,89 @@
 #+title: Steady 2D Diffusion
+#+subtitle: Computational Fluid Dynamics (AM5630)  Assignment 2
+#+author: Niraj Kumar Singh , Roll no : AM25M807
 
-[[file:./converge_log.png]]
+* Steps Followed
+** Mesh  Geometry
+Objective : Define  the  Mesh Geomety 
+
+   - STEP 1 :: first create a differential 2D Control Volume with 
+   - length along x :: delta_x
+   - length along y :: delta_y
+   - n :: required number of such differential control volumes
+    required to construct full CV
+
+   - STEP 2 :: Compute the computational nodes for each
+             differential control volume
+[[file:src/mesh_geometry.jl]]
+
+** Computations
+
+Objectives : COMPUTATIONS
+
+       - STEP 1 :: identify the boundary nodes and apply the
+                 boundary conditions  
+
+                 Boundary 1 : T_1 = 15
+                 Boundary 2 : T_2 = 10 
+                 Boundary 3 : T_3 = 5(1-y/H) + 15 * sin(pi*y/H)
+
+       - STEP 2 :: write the equation for boundary 4
+
+       - STEP 3 :: write the equation for internal nodes
+
+       - STEP 4 :: setup the conditons for tolerance
+                 Approach :
+                 1. pick n random nodes from grid
+                 2. save temperature before each iteration
+                 3. find the temperature after iteratrion 
+                 4. diff = after_iteration_temperature - before_temperature
+                 5. elementwise square each difference
+                    diff.^2
+                 6. max(diff.^2) < tolerance   
+                 and
+
+                 prepare the required helper function for computation
+
+       - STEP 5 :: perform the computations 
+
+* Plots with varying parameter
+
+ tolerance is set to  0.00001 
+
+- delta_x :: length of differential cv in x  direction
+- delta_y :: length of differential cv in y  direction
+- n :: number of grids 
+
+** Plot with n = 10
+- delta_x :: 1.0 
+- delta_y :: 1.0
+
+[[file:./plot2.png]]
+
+** Plot with n = 20
+
+- delta_x :: 0.1 
+- delta_y :: 0.1
+[[file:./plot1.png]]
+
+** n = 30
+- delta_x :: 0.01
+- delta_y :: 0.01
+[[file:./plot4.png]]
+
+- delta_x :: 1.0 
+- delta_y :: 1.0
+[[file:./plot5.png]]
+
+** Plot withn n = 40
+
+- delta_x :: 0.01 
+- delta_y :: 0.01
+[[file:./plot3.png]]
+
+* Convergence History
+This section contain the number of iteration required to achive desired convergence . the data is obtained and convergence history is plotted against logarithmic tolerane value
+
 | Tolerance | Iteration Number |
 |-----------+------------------|
 |       0.1 |                7 |
@@ -16,53 +99,4 @@
 |     1e-11 |              495 |
 |-----------+------------------|
 
-[[file:./plot1.png]]
-detail of parameter 
-delta_x = 0.1 
-delta_y = 0.1
-n = 20 
-tolerance = 0.00001
-
-
-
-
-
-
-
-
-
-
-
-
-tolerance = 0.00001
-delta_x = 1.0 # change to get variable geometry 
-delta_y = 1.0
-n = 10 
-[[file:./plot2.png]]
-
-
-
-delta_x = 0.01 # change to get variable geometry 
-delta_y = 0.01
-
-tolerance = 0.00001
-# set n to be even number 
-n = 40 
-[[file:./plot3.png]]
-
-
-tolerance = 0.00001
-delta_x = 0.01 # change to get variable geometry 
-delta_y = 0.01
-n = 30 
-[[file:./plot4.png]]
-
-
-
-tolerance = 0.00001
-delta_x = 1.0 # change to get variable geometry 
-delta_y = 1.0
-# set n to be even number 
-n = 30 
-[[file:./plot5.png]]
-
+[[file:./converge_log.png]]

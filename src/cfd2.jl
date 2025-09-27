@@ -1,6 +1,4 @@
 
-include("mesh_geometry.jl")
-
 """
 Objectives : COMPUTATIONS
         STEP 1 : identify the boundary nodes and apply the
@@ -30,6 +28,7 @@ Objectives : COMPUTATIONS
         STEP 5 : perform the computations 
 """
 
+include("mesh_geometry.jl")
 
 # STEP 1 ##### Boundary nodes
 
@@ -210,7 +209,7 @@ function experiment!(tolerance)
         end
 
         init_nodes_temp = updated_nodes_temp[:]
-        global loop_counter += 1
+        loop_counter += 1
     end
     @show loop_counter
     loop_counter
@@ -222,17 +221,3 @@ end
 # tolerance = 0.001
 # # start the computations
 # experiment(tolerance)
-
-
-# # write the data to csv file for analysing
-# function export_csv(data, filename="temp.csv")
-#     open(filename, "w") do f
-#         println(f, "X,Y,Temperature")
-#         for point in data
-#             println(f, "$(point[1]),$(point[2]),$(point[3])")
-#         end
-#     end
-# end
-
-# # Usage:
-# export_csv(nodes)

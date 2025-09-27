@@ -18,11 +18,11 @@ H = 0.5
 
 # STEP 1 ##### 
 
-delta_x = 0.1 # change to get variable geometry 
-delta_y = 0.1
+delta_x = 1.0 # change to get variable geometry 
+delta_y = 1.0
 
 # set n to be even number 
-n = 20 
+n = 30 
 
 # initialize An undefined array called "points"
 # with size  nxn 

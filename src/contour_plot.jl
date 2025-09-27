@@ -14,12 +14,12 @@ include("cfd2.jl")
 # to get the desired result
 
 # redefined again 
-tolerance = 0.0001
+tolerance = 0.00001
 
 # run experiment 
-experiment(tolerance)
+experiment!(tolerance)
     
-function professional_contour(data)
+function contourPlot(data)
     # Get unique coordinates
     x_vals = sort(unique([p[1] for p in data]))
     y_vals = sort(unique([p[2] for p in data]))
@@ -45,8 +45,8 @@ function professional_contour(data)
             dpi=300,
             linewidth=0,
             fontfamily="Computer Modern")
-    display(c)
+    savefig(c,"plot1.png")
 end
 
 # Usage:
-professional_contour(nodes)
+contourPlot(nodes)

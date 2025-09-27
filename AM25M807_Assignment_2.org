@@ -1,4 +1,4 @@
-
+#+title: Steady 2D Diffusion
 
 [[file:./converge_log.png]]
 | Tolerance | Iteration Number |
@@ -15,3 +15,54 @@
 |     1e-10 |              443 |
 |     1e-11 |              495 |
 |-----------+------------------|
+
+[[file:./plot1.png]]
+detail of parameter 
+delta_x = 0.1 
+delta_y = 0.1
+n = 20 
+tolerance = 0.00001
+
+
+
+
+
+
+
+
+
+
+
+
+tolerance = 0.00001
+delta_x = 1.0 # change to get variable geometry 
+delta_y = 1.0
+n = 10 
+[[file:./plot2.png]]
+
+
+
+delta_x = 0.01 # change to get variable geometry 
+delta_y = 0.01
+
+tolerance = 0.00001
+# set n to be even number 
+n = 40 
+[[file:./plot3.png]]
+
+
+tolerance = 0.00001
+delta_x = 0.01 # change to get variable geometry 
+delta_y = 0.01
+n = 30 
+[[file:./plot4.png]]
+
+
+
+tolerance = 0.00001
+delta_x = 1.0 # change to get variable geometry 
+delta_y = 1.0
+# set n to be even number 
+n = 30 
+[[file:./plot5.png]]
+
